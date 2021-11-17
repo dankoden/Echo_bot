@@ -35,6 +35,12 @@ class Bot():
     Echo bot
     use Python 3.9
     """
+    ROW_EVENT = {
+        'type': 'message_typing_state',
+        'object': {'state': 'typing', 'from_id': 673207418, 'to_id': -208609334},
+        'group_id': 208609334,
+        'event_id': '0f29fe489577eeee72ffb729cc01c3b092c7f084'
+    }
     def __init__(self,id_group,token):
         """
 
@@ -66,8 +72,8 @@ class Bot():
         :return None
         """
         if event.type == VkBotEventType.MESSAGE_NEW:
-            log.info("Отправляем сообщение назад")
-            self.api.messages.send(message=event.message.text,
+            # log.info("Отправляем сообщение назад")
+            self.api.messages.send( message=event.message.text,
                                     random_id=random.randint(0, 2 ** 20),
                                     peer_id=event.message.peer_id,
                                     )
