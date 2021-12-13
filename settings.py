@@ -44,7 +44,9 @@ SCENARIOS = {
                                 "next_step":"step_3"
                         },
                         "step_3":{
-                                "text":"Спасибо за регистрацию {name}. Мы отправим вам на почту {email} все данные",
+                                "text":"Спасибо за регистрацию {name}. Мы отправим вам ниже билет. И продублируем всю информацию на почту"
+                                       " почту {email} все данные",
+                                "image":"generate_ticket_handler",
                                 "failure_text":None,
                                 "handler":None,
                                 "next_step":None
@@ -55,3 +57,9 @@ SCENARIOS = {
 
 DEFAULT_ANSWER = "Незнаю как ответить на это сообщение," \
                  "могу вам предложить регистрацию на мероприятие"
+DB_CONFIG = dict(
+    provider="postgres",
+    user = "postgres" ,
+    host = "localhost",
+    database = "vk_chat_bot"
+)

@@ -3,6 +3,9 @@ Handler - функция , которая принимает на вход те�
 True если шаг пройден ,False если данные введены неверно
 """
 import re
+
+from generate_ticket import generate_ticket
+
 re_name = re.compile(r"^[\w+\s\-]{3,40}$")
 
 def handler_name(text,context):
@@ -21,5 +24,7 @@ def handle_email(text,context = None):
     else:
         return False
 
+def generate_ticket_handler(context):
+    return generate_ticket(name = context["name"],email = context["email"])
 
 

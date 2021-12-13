@@ -3,6 +3,7 @@ from unittest.mock import Mock, patch, ANY
 
 from vk_api.bot_longpoll import  VkBotMessageEvent
 
+from generate_ticket import generate_ticket
 from vk_bot import Bot
 
 
@@ -68,7 +69,20 @@ class MyTest(TestCase):
 
 
 
+    def test_ok_generate_ticket(self):
+        """
+        Test for function generate_ticket
+        """
+        with open("Files/logo_ticket.png","rb") as avatar_file:
+            avatar_mock = Mock()
+            avatar_mock.content = avatar_file.read()
 
+        with patch("requests.get",return_value=avatar_mock):
+            tickets_file = generate_ticket("Ihor", "i.ok.danko@gmail.com")
+
+        with open("Files/tickets-example.png","rb") as expected_file:
+            expected_bytes = expected_file.read()
+        assert tickets_file.read() == expected_bytes
 
 
 
